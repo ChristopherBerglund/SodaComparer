@@ -51,3 +51,7 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
+                - name: List artifacts
+                run: |
+                  echo "Listing uploaded artifacts..."
+                  ls -la /home/runner/work/_temp/*
