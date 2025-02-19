@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import './App.css';
+import { useState, React } from 'react';
 import ClipLoader from "react-spinners/ClipLoader";
 import PepsiBoxFetcher from "./compontents/Willys/PepsiBoxFetcher.jsx";
 import willysLogo from './assets/willys-logo-1.png';
@@ -9,6 +8,7 @@ import icaLogo from './assets/ica.png';
 import pepsiBackground from './assets/pepsiBackground.jpg';
 import pepsi20 from './assets/pepsi20.jpg';
 import pepsibottles from './assets/pepsiBottles.jpg';
+import './App.css';
 
 function App() {
     const [stores, setStores] = useState([
