@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vite';
 
 export default defineConfig({
   build: {
-    base: 'SodaComparer', // Ensure this matches the workflow
+    base: '/SodaComparer/', // Use a leading slash and match the GitHub Pages URL structure
   }
 });
