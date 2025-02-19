@@ -15,12 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4  # Update this to the latest version
 
       - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
+        uses: actions/setup-node@v4  # Update this to the latest version
 
       - name: Install Dependencies
         run: npm install
@@ -29,29 +27,15 @@ jobs:
         run: npm run build
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: build
-          path: dist
+        uses: actions/upload-artifact@v4  # Update this to the latest version
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: List artifacts for debugging
-        run: |
-          echo "Listing uploaded artifacts..."
-          ls -la /home/runner/work/_temp/*
-
       - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build  # Ensure this matches the name used in the upload step
-          path: dist
+        uses: actions/download-artifact@v4  # Update this to the latest version
 
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v2  # Update this to the latest version if needed
+
