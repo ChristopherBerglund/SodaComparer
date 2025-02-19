@@ -8,7 +8,6 @@ import cgLogo from './assets/CG.png';
 import icaLogo from './assets/ica.png';
 import pepsiBackground from './assets/pepsiBackground.jpg';
 import pepsi20 from './assets/pepsi20.jpg';
-import rusta from './assets/rusta.png';
 import pepsibottles from './assets/pepsiBottles.jpg';
 
 function App() {
