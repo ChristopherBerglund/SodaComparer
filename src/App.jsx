@@ -1,4 +1,4 @@
-import { useState, React } from 'react';
+import React, { useState } from 'react';
 import ClipLoader from "react-spinners/ClipLoader";
 import PepsiBoxFetcher from "./compontents/Willys/PepsiBoxFetcher.jsx";
 import willysLogo from './assets/willys-logo-1.png';
