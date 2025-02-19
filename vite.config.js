@@ -1,9 +1,5 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite'
 
 export default defineConfig({
-  plugins: [react()],
-  build: {
-    base: '/SodaComparer/',  // Make sure the base is '/' for local development
-  },
-});
+  base: '/SodaComparer/', // Change to your repo name
+})
