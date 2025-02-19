@@ -18,7 +18,7 @@ const PepsiBoxFetcher = ({ onPriceFetched, store, type }) => {
             }
 
             try {
-                const response = await axios.get(`https://sodacomparer.herokuapp.com/api/${store}/pepsi/${type}`);
+                const response = await axios.get(`https://sodacomparer-1b140e39c852.herokuapp.com/api/${store}/pepsi/${type}`);
                 const price = Math.floor(parseFloat(response.data.price));
 
                 const dataToCache = { price, timestamp: Date.now() };
