@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import React from 'react';
 import './App.css';
 import ClipLoader from "react-spinners/ClipLoader";
 import PepsiBoxFetcher from "./compontents/Willys/PepsiBoxFetcher.jsx";
