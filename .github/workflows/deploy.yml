@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - master  
+      - master
 
 permissions:
   contents: read
@@ -20,7 +20,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18  
+          node-version: 18
 
       - name: Install Dependencies
         run: npm install
@@ -28,11 +28,13 @@ jobs:
       - name: Build Project
         run: npm run build
 
-      - name: Upload Artifact
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          path: dist 
-
+          name: build
+          path: dist
+  
+  
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -40,6 +42,12 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build  # Must match the uploaded artifact name 'build'
+          path: dist
+
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2  
+        uses: actions/deploy-pages@v2

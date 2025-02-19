@@ -2,6 +2,6 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   build: {
-    outDir: 'dist', // This must match the workflow
+    outDir: 'dist', // Ensure this matches the workflow
   }
 });
