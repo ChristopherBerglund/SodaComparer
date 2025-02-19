@@ -7,19 +7,33 @@ const PepsiBoxFetcher = ({ onPriceFetched, store, type }) => {
     useEffect(() => {
         if (hasFetched) return;
         const fetchPrice = async () => {
+            const cacheKey = `${store}_${type}_price`;
+            const cachedData = JSON.parse(localStorage.getItem(cacheKey));
+
+            if (cachedData && Date.now() - cachedData.timestamp < 3600000) {
+                onPriceFetched(cachedData.price);
+                setHasFetched(true);
+                console.log('Using cached price:', type + ': ' + cachedData.price);
+                return;
+            }
+
             try {
                 const response = await axios.get(`http://localhost:3000/api/${store}/pepsi/${type}`);
                 const price = Math.floor(parseFloat(response.data.price));
+
+                const dataToCache = { price, timestamp: Date.now() };
+                localStorage.setItem(cacheKey, JSON.stringify(dataToCache));
+
                 onPriceFetched(price);
                 setHasFetched(true);
-                console.log('price: ',type + ': ' + price);
+                console.log('Fetched price from API:', type + ': ' + price);
             } catch (error) {
                 console.error('Error fetching price:', error);
             }
         };
 
         fetchPrice();
-    }, [onPriceFetched, store, hasFetched]);
+    }, [onPriceFetched, store, type, hasFetched]);
 
     return null;
 };
