@@ -33,8 +33,7 @@ jobs:
         with:
           name: build
           path: dist
-  
-  
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -42,16 +41,17 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: List artifacts for debugging
+        run: |
+          echo "Listing uploaded artifacts..."
+          ls -la /home/runner/work/_temp/*
+
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
-          name: build  # Must match the uploaded artifact name 'build'
+          name: build  # Ensure this matches the name used in the upload step
           path: dist
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
-                - name: List artifacts
-                run: |
-                  echo "Listing uploaded artifacts..."
-                  ls -la /home/runner/work/_temp/*
