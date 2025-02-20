@@ -117,6 +117,18 @@ h, h2, h3 {
     margin-top: 20px;
 }
 
+@keyframes flash {
+  0% { background-color: yellow; }
+  50% { background-color: transparent; }
+  100% { background-color: yellow; }
+}
+
+.flash {
+  animation: flash 1s infinite alternate;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
 /* Media Queries for responsiveness */
 @media (max-width: 1024px) {
   .app-container {
